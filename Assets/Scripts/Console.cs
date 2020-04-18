@@ -8,8 +8,17 @@ public class Console : MonoBehaviour
 {
     public TextMeshProUGUI ConsoleText;
     public GameObject CursorObj;
+    private Image cursorImage;
     private int maxCharactersPerLine = 19;
     private string text = "";
+    private bool cursorOn = true;
+    private float cursorBlinkTimeMax = 0.3f;
+    private float cursorBlinkTimer = 0f;
+
+    private void Start()
+    {
+        cursorImage = CursorObj.GetComponent<Image>();
+    }
 
     private void Update()
     {
@@ -24,6 +33,7 @@ public class Console : MonoBehaviour
             }
             else if ((c == '\n') || (c == '\r'))
             {
+                SendCommand(text);
                 text = "";
             }
             else
@@ -46,5 +56,20 @@ public class Console : MonoBehaviour
         {
             CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-115f, -5.16875f, 0f);
         }
+
+        cursorBlinkTimer += Time.deltaTime;
+        if (cursorBlinkTimer >= cursorBlinkTimeMax)
+        {
+            cursorBlinkTimer = 0f;
+            cursorOn = !cursorOn;
+            cursorImage.enabled = cursorOn;
+        }
+    }
+
+    private void SendCommand(string command)
+    {
+        command = command.ToLower();
+        if (command == "heal")
+            Health.Heal(10);
     }
 }

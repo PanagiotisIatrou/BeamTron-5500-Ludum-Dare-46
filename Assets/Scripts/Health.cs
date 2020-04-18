@@ -40,4 +40,9 @@ public class Health : MonoBehaviour
     {
         SetHealth(Instance.health - amount);
     }
+
+    public static void Heal(int amount)
+    {
+        SetHealth(Instance.health + amount);
+    }
 }
