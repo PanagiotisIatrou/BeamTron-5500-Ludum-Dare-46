@@ -46,6 +46,11 @@ public class Missile : MonoBehaviour
         if (col.transform.name == "Earth")
             Health.TakeDamage(20);
 
+        DestroyMissile();
+    }
+
+    public void DestroyMissile()
+    {
         Destroy(gameObject);
     }
 

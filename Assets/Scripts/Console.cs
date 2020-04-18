@@ -83,7 +83,7 @@ public class Console : MonoBehaviour
         }
         else if (command == "destroy")
         {
-
+            MissilesDestroyer.DestroyClosest();
         }
     }
 }
