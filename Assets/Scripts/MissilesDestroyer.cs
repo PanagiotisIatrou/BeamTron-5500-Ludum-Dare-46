@@ -42,5 +42,6 @@ public class MissilesDestroyer : MonoBehaviour
 
 		// ...and destroy it
 		closestMissile.GetComponent<Missile>().DestroyMissile();
+		Earth.ShootLaser(closestMissile.GetChild(0).position, 0.1f);
     }
 }

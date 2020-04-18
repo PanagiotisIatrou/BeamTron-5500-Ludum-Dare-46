@@ -22,10 +22,26 @@ public class Earth : MonoBehaviour
 
     public Sprite[] EarthSprites;
     private SpriteRenderer sr;
+    private LineRenderer lineRenderer;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        lineRenderer = transform.GetChild(0).GetComponent<LineRenderer>();
+    }
+
+    public static void ShootLaser(Vector3 position, float time)
+    {
+        position.z = 1f;
+        Instance.StartCoroutine(Instance.IEshootLaser(position, time));
+    }
+
+    private IEnumerator IEshootLaser(Vector2 position, float time)
+    {
+        Instance.lineRenderer.gameObject.SetActive(true);
+        Instance.lineRenderer.SetPosition(1, position);
+        yield return new WaitForSeconds(time);
+        Instance.lineRenderer.gameObject.SetActive(false);
     }
 
     public static void UpdateSprite()
