@@ -20,4 +20,5 @@ public class GameManager : MonoBehaviour
 	}
 
 	public Transform MissilesHolder;
+	public Transform ExplosionPrefab;
 }

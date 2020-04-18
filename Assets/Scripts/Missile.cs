@@ -5,14 +5,14 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed = 40f;
+    private float speed = 50f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        float angleDiff0 = Random.Range(-50f, -30f);
-        float angleDiff1 = Random.Range(30f, 50f);
+        float angleDiff0 = Random.Range(-35f, -25f);
+        float angleDiff1 = Random.Range(25f, 35f);
         int r = Random.Range(0, 2);
         Vector3 difference = Earth.Instance.transform.position - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg + (r == 0 ? angleDiff0 : angleDiff1);
@@ -34,9 +34,9 @@ public class Missile : MonoBehaviour
     private void FixedUpdate()
     {
         // Add gravity towards  center
-        float dist = Vector2.Distance(Earth.Instance.transform.position, transform.position);
+        float dist = Vector2.Distance(Earth.Instance.transform.position, transform.position) + 0.5f;
         Vector2 force = (Earth.Instance.transform.position - transform.position).normalized;
-        rb.AddForce(force * 0.15f * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        rb.AddForce(force * 4f * (1f / (dist * dist)) * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
         rb.velocity = rb.velocity.normalized * speed * Time.fixedDeltaTime;
     }
@@ -52,6 +52,8 @@ public class Missile : MonoBehaviour
     public void DestroyMissile()
     {
         Shaker.Shake(0.1f);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y, -2f);
+        Instantiate(GameManager.Instance.ExplosionPrefab, pos, Quaternion.identity);
         Destroy(gameObject);
     }
 
