@@ -5,6 +5,7 @@ using UnityEngine;
 public class MissileSpawner : MonoBehaviour
 {
     public GameObject MissilePrefab;
+    public Transform MissilesHolder;
     private Vector2 spawnXBounds = new Vector2(-7.5f, 7.5f);
     private Vector2 spawnYBounds = new Vector2(-4f, 6f);
     private float spawnTimeMax = 5f;
@@ -16,7 +17,7 @@ public class MissileSpawner : MonoBehaviour
         if (spawnTimer >= spawnTimeMax)
         {
             spawnTimer = 0f;
-            Instantiate(MissilePrefab, GetRandomPosOut(), Quaternion.identity);
+            Instantiate(MissilePrefab, GetRandomPosOut(), Quaternion.identity, MissilesHolder);
         }
     }
 

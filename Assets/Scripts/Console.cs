@@ -77,6 +77,13 @@ public class Console : MonoBehaviour
         command = command.Substring(preText.Length, command.Length - preText.Length);
         command = command.ToLower();
         if (command == "heal")
+        {
             Health.Heal(10);
+            Reder.MakeRed("win");
+        }
+        else if (command == "destroy")
+        {
+
+        }
     }
 }
