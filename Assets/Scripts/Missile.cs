@@ -5,14 +5,14 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed = 50f;
+    private float speed = 40f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        float angleDiff0 = Random.Range(-40f, -20f);
-        float angleDiff1 = Random.Range(20f, 40f);
+        float angleDiff0 = Random.Range(-50f, -30f);
+        float angleDiff1 = Random.Range(30f, 50f);
         int r = Random.Range(0, 2);
         Vector3 difference = Earth.Instance.transform.position - transform.position;
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg + (r == 0 ? angleDiff0 : angleDiff1);
@@ -36,7 +36,7 @@ public class Missile : MonoBehaviour
         // Add gravity towards  center
         float dist = Vector2.Distance(Earth.Instance.transform.position, transform.position);
         Vector2 force = (Earth.Instance.transform.position - transform.position).normalized;
-        rb.AddForce(force * 0.2f * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        rb.AddForce(force * 0.15f * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
         rb.velocity = rb.velocity.normalized * speed * Time.fixedDeltaTime;
     }
