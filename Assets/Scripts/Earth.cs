@@ -20,13 +20,32 @@ public class Earth : MonoBehaviour
 
     }
 
-    void Start()
+    public Sprite[] EarthSprites;
+    private SpriteRenderer sr;
+
+    private void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    public static void UpdateSprite()
     {
-        
+        int health = Health.GetHealth();
+        int spritesCount = Instance.EarthSprites.Length;
+        float div = 100f / (spritesCount - 1);
+
+        bool isAlive = false;
+        for (int i = 0; i < spritesCount - 1; i++)
+        {
+            if (health > div * (spritesCount - i - 2))
+            {
+                Instance.sr.sprite = Instance.EarthSprites[i];
+                isAlive = true;
+                break;
+            }
+        }
+
+        if (!isAlive)
+            Instance.sr.sprite = Instance.EarthSprites[spritesCount - 1];
     }
 }

@@ -860,6 +860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87641f3f239fd6c4ea6fe433790a231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EarthSprites:
+  - {fileID: 21300000, guid: f2791538cd0650d459aba848f39ba363, type: 3}
+  - {fileID: 21300000, guid: 0b86dc74898bbca478e6efbab57bf50e, type: 3}
+  - {fileID: 21300000, guid: e282af9e37514d344af00c5095fd91a2, type: 3}
+  - {fileID: 21300000, guid: 19902e8bb630a8a4ea967ed87fba5bdf, type: 3}
+  - {fileID: 21300000, guid: 9999c274dcf60684c8fc7c39cdba63ac, type: 3}
 --- !u!1 &897268143
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,11 +29,17 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
+    public static int GetHealth()
+    {
+        return Instance.health;
+    }
+
     public static void SetHealth(int amount)
     {
         Instance.health = amount;
         Instance.health = Mathf.Clamp(Instance.health, 0, Instance.maxHealth);
         Instance.slider.value = (float)Instance.health / Instance.maxHealth;
+        Earth.UpdateSprite();
     }
 
     public static void TakeDamage(int amount)
