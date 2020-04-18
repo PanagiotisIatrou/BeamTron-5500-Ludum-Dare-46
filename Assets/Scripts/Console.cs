@@ -11,12 +11,14 @@ public class Console : MonoBehaviour
     private Image cursorImage;
     private int maxCharactersPerLine = 19;
     private string text = "";
+    private string preText = "C:\\";
     private bool cursorOn = true;
     private float cursorBlinkTimeMax = 0.3f;
     private float cursorBlinkTimer = 0f;
 
     private void Start()
     {
+        text = preText;
         cursorImage = CursorObj.GetComponent<Image>();
     }
 
@@ -34,7 +36,7 @@ public class Console : MonoBehaviour
             else if ((c == '\n') || (c == '\r'))
             {
                 SendCommand(text);
-                text = "C:\\";
+                text = preText;
             }
             else
             {
@@ -53,11 +55,12 @@ public class Console : MonoBehaviour
         if (ConsoleText.textInfo.characterCount > 0)
         {
             Vector3 bottomRight = ConsoleText.textInfo.characterInfo[ConsoleText.textInfo.characterCount - 1].bottomLeft;
-            CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(17f, 2f, 0f);
+            bottomRight.y = -5.16875f;
+            CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(17f, 0f, 0f);
         }
         else
         {
-            CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-115f, -5.16875f, 0f);
+            CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-115f, -7.16875f, 0f);
         }
 
         cursorBlinkTimer += Time.deltaTime;
@@ -71,7 +74,7 @@ public class Console : MonoBehaviour
 
     private void SendCommand(string command)
     {
-        text = text.Substring(3, text.Length - 3);
+        command = command.Substring(preText.Length, command.Length - preText.Length);
         command = command.ToLower();
         if (command == "heal")
             Health.Heal(10);
