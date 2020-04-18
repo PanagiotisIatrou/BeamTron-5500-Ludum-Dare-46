@@ -23,7 +23,7 @@ public class Earth : MonoBehaviour
     public Sprite[] EarthSprites;
     private SpriteRenderer sr;
     private LineRenderer lineRenderer;
-    private float fullRoationTime = 360f;
+    private float fullRoationTime = 720f;
 
     private void Start()
     {
