@@ -37,9 +37,14 @@ public class Console : MonoBehaviour
 
         ConsoleText.SetText(text);
 
-        if (ConsoleText.textInfo.characterCount == 0)
-            return;
-        Vector3 bottomRight = ConsoleText.textInfo.characterInfo[ConsoleText.textInfo.characterCount - 1].bottomLeft;
-        CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(0f, 100f, 0f);
+        if (ConsoleText.textInfo.characterCount > 0)
+        {
+            Vector3 bottomRight = ConsoleText.textInfo.characterInfo[ConsoleText.textInfo.characterCount - 1].bottomLeft;
+            CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(17f, 2f, 0f);
+        }
+        else
+        {
+            CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-115f, -5.16875f, 0f);
+        }
     }
 }
