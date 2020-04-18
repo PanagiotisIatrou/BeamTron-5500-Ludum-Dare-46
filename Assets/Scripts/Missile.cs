@@ -5,7 +5,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed = 1.5f;
+    private float speed = 50f;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class Missile : MonoBehaviour
 
         float x = Mathf.Cos(rotationZ * Mathf.PI / 180f);
         float y = Mathf.Sin(rotationZ * Mathf.PI / 180f);
-        rb.AddForce(new Vector2(x, y) * speed * 2, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(x, y) * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private void Update()
@@ -35,10 +35,10 @@ public class Missile : MonoBehaviour
     {
         // Add gravity towards  center
         float dist = Vector2.Distance(Earth.Instance.transform.position, transform.position);
-        Vector2 force = (Earth.Instance.transform.position - transform.position).normalized * 0.015f;
-        rb.AddForce(force, ForceMode2D.Impulse);
+        Vector2 force = (Earth.Instance.transform.position - transform.position).normalized;
+        rb.AddForce(force * 0.2f * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
-        rb.velocity = rb.velocity.normalized * speed;
+        rb.velocity = rb.velocity.normalized * speed * Time.fixedDeltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
