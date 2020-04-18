@@ -22,8 +22,8 @@ public class Reder : MonoBehaviour
 	public Image RedImage;
 
 	private bool working;
-	private float totalTime = 0.5f;
-	private float greenPercentage = 80f / 255f;
+	private float totalTime = 1f;
+	private float greenPercentage = 70f / 255f;
 	private IEnumerator redCor;
 
 	public static void MakeRed(string mode = "")

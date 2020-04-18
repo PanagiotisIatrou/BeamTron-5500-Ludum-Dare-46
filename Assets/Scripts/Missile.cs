@@ -51,6 +51,7 @@ public class Missile : MonoBehaviour
 
     public void DestroyMissile()
     {
+        Shaker.Shake(0.1f);
         Destroy(gameObject);
     }
 
