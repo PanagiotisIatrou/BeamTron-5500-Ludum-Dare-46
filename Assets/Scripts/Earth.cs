@@ -23,11 +23,22 @@ public class Earth : MonoBehaviour
     public Sprite[] EarthSprites;
     private SpriteRenderer sr;
     private LineRenderer lineRenderer;
+    private float fullRoationTime = 360f;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         lineRenderer = transform.GetChild(0).GetComponent<LineRenderer>();
+    }
+
+    private void Update()
+    {
+        RotateEarth();
+    }
+
+    private void RotateEarth()
+    {
+        transform.Rotate(0f, 0f, Time.deltaTime * 360f / fullRoationTime);
     }
 
     public static void ShootLaser(Vector3 position, float time)
