@@ -9,7 +9,7 @@ public class Console : MonoBehaviour
     public TextMeshProUGUI ConsoleText;
     public GameObject CursorObj;
     private Image cursorImage;
-    private int maxCharactersPerLine = 19;
+    private int maxCharactersPerLine = 18;
     private string text = "";
     private string preText = "C:\\";
     private bool cursorOn = true;
@@ -55,12 +55,12 @@ public class Console : MonoBehaviour
         if (ConsoleText.textInfo.characterCount > 0)
         {
             Vector3 bottomRight = ConsoleText.textInfo.characterInfo[ConsoleText.textInfo.characterCount - 1].bottomLeft;
-            bottomRight.y = -5.16875f;
-            CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(17f, 0f, 0f);
+            bottomRight.y = -9.1f;
+            CursorObj.GetComponent<RectTransform>().localPosition = bottomRight += new Vector3(35f, 0f, 0f);
         }
         else
         {
-            CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-115f, -7.16875f, 0f);
+            CursorObj.GetComponent<RectTransform>().localPosition = new Vector3(-80f, -11.1f, 0f);
         }
 
         cursorBlinkTimer += Time.deltaTime;
