@@ -34,7 +34,7 @@ public class Console : MonoBehaviour
             else if ((c == '\n') || (c == '\r'))
             {
                 SendCommand(text);
-                text = "";
+                text = "C:\\";
             }
             else
             {
@@ -43,7 +43,10 @@ public class Console : MonoBehaviour
         }
 
         if (text.Length > maxCharactersPerLine)
-            text = text.Substring(text.Length - maxCharactersPerLine, text.Length - 1);
+        {
+            int diff = text.Length - maxCharactersPerLine;
+            text = text.Substring(diff, text.Length - diff);
+        }
 
         ConsoleText.SetText(text);
 
@@ -68,6 +71,7 @@ public class Console : MonoBehaviour
 
     private void SendCommand(string command)
     {
+        text = text.Substring(3, text.Length - 3);
         command = command.ToLower();
         if (command == "heal")
             Health.Heal(10);
