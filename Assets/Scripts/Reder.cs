@@ -40,7 +40,7 @@ public class Reder : MonoBehaviour
 		Color col = RedImage.color;
 
 		if (mode == "lose")
-			col = new Color(1f, 0f, 0f, 1f);
+			col = new Color(1f, 0f, 0f, greenPercentage * 2f);
 		else if (mode == "win")
 			col = new Color(0f, 1f, 0f, greenPercentage);
 

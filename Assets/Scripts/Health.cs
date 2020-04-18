@@ -39,6 +39,7 @@ public class Health : MonoBehaviour
     public static void TakeDamage(int amount)
     {
         SetHealth(Instance.health - amount);
+        Reder.MakeRed("lose");
     }
 
     public static void Heal(int amount)
