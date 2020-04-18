@@ -85,5 +85,9 @@ public class Console : MonoBehaviour
         {
             MissilesDestroyer.DestroyClosest();
         }
+        else if (command == "recycle")
+        {
+            Oxygen.IncreaseOxygenByPercent(20);
+        }
     }
 }

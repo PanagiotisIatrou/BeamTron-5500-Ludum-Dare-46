@@ -21,23 +21,39 @@ public class Oxygen : MonoBehaviour
     }
 
     public Slider slider;
-    private int maxOxygen = 100;
-    private int oxygen;
+    private float maxOxygen = 10f;
+    private float oxygen;
+    private float oxygenDropRate = 0.25f;
 
     private void Start()
     {
         oxygen = maxOxygen;
     }
 
-    public static void SetOxygen(int amount)
+    private void Update()
+    {
+        LowerOxygen(oxygenDropRate * Time.deltaTime);
+    }
+
+    public static void SetOxygen(float amount)
     {
         Instance.oxygen = amount;
         Instance.oxygen = Mathf.Clamp(Instance.oxygen, 0, Instance.maxOxygen);
         Instance.slider.value = (float)Instance.oxygen / Instance.maxOxygen;
     }
 
-    public static void LowerOxygen(int amount)
+    public static void LowerOxygen(float amount)
     {
         SetOxygen(Instance.oxygen - amount);
+    }
+
+    public static void IncreaseOxygen(float amount)
+    {
+        SetOxygen(Instance.oxygen + amount);
+    }
+
+    public static void IncreaseOxygenByPercent(float percent)
+    {
+        SetOxygen(Instance.oxygen + Instance.maxOxygen * percent / 100f);
     }
 }
