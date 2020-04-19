@@ -10,7 +10,7 @@ public class MissileSpawner : MonoBehaviour
 	private float spawnTimeMax = 2.9f;
 	private float spawnTimer = 0f;
 
-	private float peaceTime = 5f;
+	private float peaceTime = 7f;
 	private float waveTime = 15f;
 
 	private string state = "peace";
@@ -34,6 +34,7 @@ public class MissileSpawner : MonoBehaviour
 				// Say wave is over
 				firstPeace = false;
 				Radar.DeclarePeace();
+				PeaceText.ShowPeaceText(peaceTime);
 			}
 		}
 
@@ -44,8 +45,9 @@ public class MissileSpawner : MonoBehaviour
 			{
 				state = "wave";
 				wave++;
-				spawnTimer = spawnTimeMax - 0.5f; // Start the wave in half a second
+				spawnTimer = spawnTimeMax - 1f; // Start the wave in a second
 				Radar.DeclareWave();
+				WaveText.ShowWaveText(wave);
 			}
 			else
 			{

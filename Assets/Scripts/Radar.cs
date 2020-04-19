@@ -19,6 +19,7 @@ public class Radar : MonoBehaviour
 		}
 
 	}
+
 	private Animator anim;
 
     private void Start()
