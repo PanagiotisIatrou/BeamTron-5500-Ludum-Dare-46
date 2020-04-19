@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public Transform MissilesHolder;
+	public Transform EnemiesHolder;
 	public Transform ExplosionPrefab;
 
 	public static bool died = false;

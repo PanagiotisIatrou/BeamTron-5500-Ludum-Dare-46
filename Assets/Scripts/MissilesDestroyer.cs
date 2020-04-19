@@ -7,7 +7,7 @@ public class MissilesDestroyer : MonoBehaviour
 
     public static void DestroyClosest()
     {
-        Transform MissilesHolder = GameManager.Instance.MissilesHolder;
+        Transform MissilesHolder = GameManager.Instance.EnemiesHolder.GetChild(0);
 		if (MissilesHolder.childCount == 0) // No missiles found, so nothing to do here
 			return;
 
