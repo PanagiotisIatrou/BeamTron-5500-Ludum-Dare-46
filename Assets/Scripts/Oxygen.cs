@@ -40,6 +40,11 @@ public class Oxygen : MonoBehaviour
         return Instance.oxygen;
     }
 
+    public static float GetOxygenPercent()
+    {
+        return Instance.oxygen / Instance.maxOxygen;
+    }
+
     public static void SetOxygen(float amount)
     {
         Instance.oxygen = amount;
