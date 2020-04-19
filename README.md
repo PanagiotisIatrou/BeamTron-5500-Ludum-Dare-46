@@ -1,3 +1,3 @@
-# Ludum-Dare-46
+# BeamTron 5500
 
 ![](game.gif)
