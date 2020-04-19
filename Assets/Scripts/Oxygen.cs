@@ -35,6 +35,11 @@ public class Oxygen : MonoBehaviour
         LowerOxygen(oxygenDropRate * Time.deltaTime);
     }
 
+    public static float GetOxygen()
+    {
+        return Instance.oxygen;
+    }
+
     public static void SetOxygen(float amount)
     {
         Instance.oxygen = amount;

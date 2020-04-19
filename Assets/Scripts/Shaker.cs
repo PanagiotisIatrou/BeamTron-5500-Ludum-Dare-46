@@ -49,6 +49,12 @@ public class Shaker : MonoBehaviour
 		}
 	}
 
+	public static void SetShakeLengthSpeed(float length, float speed)
+	{
+		Instance.shakeLength = length;
+		Instance.shakeSpeed = speed;
+	}
+
 	public static void Shake(float magnitude)
 	{
 		Instance.shakeAmount = magnitude;

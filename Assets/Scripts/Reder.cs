@@ -39,9 +39,11 @@ public class Reder : MonoBehaviour
 		working = true;
 		Color col = RedImage.color;
 
-		if (mode == "lose")
+		if (mode == "red")
 			col = new Color(1f, 0f, 0f, greenPercentage * 2f);
-		else if (mode == "win")
+		else if (mode == "dead")
+			col = new Color(1f, 0f, 0f, 1f);
+		else if (mode == "green")
 			col = new Color(0f, 1f, 0f, greenPercentage);
 
 		RedImage.color = col;
@@ -54,7 +56,7 @@ public class Reder : MonoBehaviour
 			yield return null;
 		}
 		col.a = 0f;
-		if (mode == "win")
+		if (mode == "green")
 			col = new Color(1f, 0f, 0f, 0f);
 		RedImage.color = col;
 		working = false;

@@ -77,7 +77,7 @@ public class Console : MonoBehaviour
 		if (command == "heal")
 		{
 			Health.Heal(10);
-			Reder.MakeRed("win");
+			Reder.MakeRed("green");
 		}
 		else if (command == "destroy")
 		{

@@ -6,6 +6,6 @@ public class MainMenuButtonListeners : MonoBehaviour
 {
     public void OnPlayButtonListener()
     {
-        BlackFader.GoToScene("Game", UnityEngine.SceneManagement.LoadSceneMode.Single, 1f);
+        BlackFader.GoToScene("Game", UnityEngine.SceneManagement.LoadSceneMode.Single, 0.8f);
     }
 }
