@@ -9,7 +9,7 @@ public class IntroText : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.z > 16f && !called)
+        if ((transform.position.z > 16f && !called) || Input.GetKeyDown(KeyCode.Return))
         {
             called = true;
             BlackFader.GoToScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single, 3f);
