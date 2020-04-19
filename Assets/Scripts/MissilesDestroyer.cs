@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class MissilesDestroyer : MonoBehaviour
 {
+	public static void DestroyClosestMissile()
+	{
+		DestroyClosest(GameManager.Instance.EnemiesHolder.GetChild(0), "missile");
+	}
 
-    public static void DestroyClosest()
+	public static void DestroyClosestShip()
+	{
+		DestroyClosest(GameManager.Instance.EnemiesHolder.GetChild(1), "ship");
+	}
+
+	private static void DestroyClosest(Transform parent, string type)
     {
-        Transform MissilesHolder = GameManager.Instance.EnemiesHolder.GetChild(0);
-		if (MissilesHolder.childCount == 0) // No missiles found, so nothing to do here
+		if (parent.childCount == 0) // No enemies found, so nothing to do here
 			return;
 
-		// Find closest missile...
-		Transform closestMissile = null;
+		// Find closest enemy...
+		Transform closestEnemy = null;
 		float minDist = -1f;
-		for (int i = 0; i < MissilesHolder.childCount; i++)
+		for (int i = 0; i < parent.childCount; i++)
         {
-			Transform missile = MissilesHolder.GetChild(i);
+			Transform missile = parent.GetChild(i);
 			float dist = Vector2.Distance(Earth.Instance.transform.position, missile.position);
 			if (i == 0 ||  dist < minDist)
 			{
 				minDist = dist;
-				closestMissile = missile;
+				closestEnemy = missile;
 			}
 		}
 
 		// ...and destroy it
-		closestMissile.GetComponent<Missile>().DestroyMissile();
-		Earth.ShootLaser(closestMissile.GetChild(0).position, 0.1f);
+		if (type == "missile")
+			closestEnemy.GetComponent<Missile>().DestroyMissile();
+		else if (type == "ship")
+			closestEnemy.GetComponent<Ship>().DestroyShip();
+
+		Earth.ShootLaser(closestEnemy.GetChild(0).position, 0.1f);
     }
 }

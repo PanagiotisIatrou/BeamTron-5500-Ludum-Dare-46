@@ -59,7 +59,11 @@ public class EnemySpawner : MonoBehaviour
 			if (spawnTimer >= spawnTimeMax && enemiesWaveCounter < enemiesPerWave)
 			{
 				spawnTimer = 0f;
-				Instantiate(MissilePrefab, GetRandomPosOut(), Quaternion.identity, GameManager.Instance.EnemiesHolder.GetChild(0));
+				int r = Random.Range(0, 2);
+				if (r == 0)
+					Instantiate(MissilePrefab, GetRandomPosOut(), Quaternion.identity, GameManager.Instance.EnemiesHolder.GetChild(0));
+				else
+					Instantiate(ShipPrefab, GetRandomPosOut(), Quaternion.identity, GameManager.Instance.EnemiesHolder.GetChild(1));
 
 				enemiesWaveCounter++;
 				if (enemiesWaveCounter == enemiesPerWave) // Go to peace if all enemies have been spawned
