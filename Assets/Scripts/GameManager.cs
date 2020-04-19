@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 		Shaker.Shake(0.12f);
 		Reder.MakeRed("dead");
 		Time.timeScale = 0.5f;
-			died = true;
 		BlackFader.GoToScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single, 1f, Instance.Ressurect, null);
 	}
 
