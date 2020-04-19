@@ -87,5 +87,9 @@ public class Console : MonoBehaviour
 		{
 			Oxygen.IncreaseOxygenByPercent(20);
 		}
+		else if (command == "self destroy")
+		{
+			GameManager.Die();
+		}
 	}
 }

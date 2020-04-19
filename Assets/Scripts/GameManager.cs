@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void Die()
+	public static void Die()
 	{
 		died = true;
 		Shaker.SetShakeLengthSpeed(1f, 55f);
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 		Reder.MakeRed("dead");
 		Time.timeScale = 0.5f;
 			died = true;
-		BlackFader.GoToScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single, 1f, Ressurect, null);
+		BlackFader.GoToScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single, 1f, Instance.Ressurect, null);
 	}
 
 	private void Ressurect()
