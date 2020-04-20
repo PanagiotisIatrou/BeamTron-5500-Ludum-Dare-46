@@ -24,6 +24,7 @@ public class Earth : MonoBehaviour
     private SpriteRenderer sr;
     private LineRenderer lineRenderer;
     private float fullRoationTime = 720f;
+    private int state = 0;
 
     private void Start()
     {
@@ -55,6 +56,11 @@ public class Earth : MonoBehaviour
         Instance.lineRenderer.gameObject.SetActive(false);
     }
 
+    public static int GetState()
+    {
+        return Instance.state;
+    }
+
     public static void UpdateSprite()
     {
         int health = Health.GetHealth();
@@ -68,6 +74,7 @@ public class Earth : MonoBehaviour
             {
                 Instance.sr.sprite = Instance.EarthSprites[i];
                 isAlive = true;
+                Instance.state = i;
                 break;
             }
         }

@@ -9,10 +9,12 @@ public class Explosion : MonoBehaviour
 
 	public void PlayExplosionSound(string type)
 	{
+		Vector3 pos = transform.position;
+		pos.z = -10;
 		if (type == "small")
-			AudioSource.PlayClipAtPoint(small, transform.position);
+			AudioSource.PlayClipAtPoint(small, pos);
 		else if (type == "big")
-			AudioSource.PlayClipAtPoint(big, transform.position);
+			AudioSource.PlayClipAtPoint(big, pos);
 	}
 
 	public void DestroyExplosion()

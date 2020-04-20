@@ -21,6 +21,7 @@ public class Oxygen : MonoBehaviour
     }
 
     public Slider slider;
+    public AudioClip beep;
     private float maxOxygen = 10f;
     private float oxygen;
     private float oxygenDropRate = 0.25f;

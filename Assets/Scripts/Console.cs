@@ -9,6 +9,7 @@ public class Console : MonoBehaviour
 	public TextMeshProUGUI ConsoleText;
 	public GameObject CursorObj;
 	public AudioClip audioClip;
+	public AudioClip beep;
 	private Image cursorImage;
 	private int maxCharactersPerLine = 18;
 	private string text = "";
@@ -29,7 +30,7 @@ public class Console : MonoBehaviour
 		{
 			Vector3 pos = transform.position;
 			pos.z = -10f;
-			AudioSource.PlayClipAtPoint(audioClip, pos, 0.35f);
+			AudioSource.PlayClipAtPoint(audioClip, pos, 0.65f);
 			if (c == '\b')
 			{
 				if (text.Length > preText.Length)
@@ -78,6 +79,8 @@ public class Console : MonoBehaviour
 	{
 		command = command.Substring(preText.Length, command.Length - preText.Length);
 		command = command.ToLower();
+
+		bool found = true;
 		if (command == "heal")
 		{
 			Health.Heal(10);
@@ -91,13 +94,24 @@ public class Console : MonoBehaviour
 		{
 			MissilesDestroyer.DestroyClosestShip();
 		}
-		else if (command == "recycle")
+		else if (command == "oxygen")
 		{
 			Oxygen.IncreaseOxygenByPercent(20);
 		}
 		else if (command == "self destroy")
 		{
 			GameManager.Die();
+		}
+		else
+		{
+			found = false;
+		}
+
+		if (found)
+		{
+			Vector3 pos = Camera.main.transform.position;
+			pos.z = -10;
+			AudioSource.PlayClipAtPoint(beep, pos, 0.5f);
 		}
 	}
 }
