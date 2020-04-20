@@ -23,10 +23,13 @@ public class EnemySpawner : MonoBehaviour
 
 	private bool firstPeace = false;
 
+	private void Start()
+	{
+		peaceTimer = peaceTimeMax - 2f; // On the start of the game peace only lasts 2 seconds.
+	}
+
 	private void Update()
 	{
-		// Update state
-
 		// Make sure all enemies are destroyed to start counting peace
 		if (state == "peace" && GetEnemiesLeft() == 0)
 		{

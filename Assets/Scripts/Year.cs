@@ -5,6 +5,22 @@ using TMPro;
 
 public class Year : MonoBehaviour
 {
+    // Singleton
+    private static Year _instance;
+    public static Year Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Year>();
+            }
+
+            return _instance;
+        }
+
+    }
+
     public TextMeshProUGUI YearText;
     private int year = 2025;
     private float yearTimeMax = 5f; // Length of a year in seconds
@@ -19,5 +35,10 @@ public class Year : MonoBehaviour
             year++;
             YearText.SetText("YEAR: " + year);
         }
+    }
+
+    public static int GetYear()
+    {
+        return Instance.year;
     }
 }
