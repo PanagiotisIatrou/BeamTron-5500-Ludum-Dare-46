@@ -8,6 +8,7 @@ public class Console : MonoBehaviour
 {
 	public TextMeshProUGUI ConsoleText;
 	public GameObject CursorObj;
+	public AudioClip audioClip;
 	private Image cursorImage;
 	private int maxCharactersPerLine = 18;
 	private string text = "";
@@ -26,6 +27,7 @@ public class Console : MonoBehaviour
 	{
 		foreach (char c in Input.inputString)
 		{
+			AudioSource.PlayClipAtPoint(audioClip, transform.position);
 			if (c == '\b')
 			{
 				if (text.Length > preText.Length)

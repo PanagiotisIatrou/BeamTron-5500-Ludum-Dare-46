@@ -5655,6 +5655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConsoleText: {fileID: 1999660075}
   CursorObj: {fileID: 1805251182}
+  audioClip: {fileID: 8300000, guid: 53b8c96360bcf6f4aa85e60ed6cc4ca4, type: 3}
 --- !u!4 &556163291
 Transform:
   m_ObjectHideFlags: 0

@@ -53,7 +53,8 @@ public class Missile : MonoBehaviour
     {
         Shaker.Shake(0.1f);
         Vector3 pos = new Vector3(transform.position.x, transform.position.y, -2f);
-        Instantiate(GameManager.Instance.ExplosionPrefab, pos, Quaternion.identity);
+        Transform exp = Instantiate(GameManager.Instance.ExplosionPrefab, pos, Quaternion.identity);
+        exp.GetComponent<Explosion>().PlayExplosionSound("small");
         Destroy(gameObject);
     }
 
