@@ -26,6 +26,9 @@ public class Console : MonoBehaviour
 
 	private void Update()
 	{
+		if (GameButtonListeners.seesHelp)
+			return;
+
 		foreach (char c in Input.inputString)
 		{
 			Vector3 pos = transform.position;

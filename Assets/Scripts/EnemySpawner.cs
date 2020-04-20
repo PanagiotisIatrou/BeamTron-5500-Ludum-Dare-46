@@ -7,9 +7,9 @@ public class EnemySpawner : MonoBehaviour
 	public GameObject MissilePrefab;
 	public GameObject ShipPrefab;
 
-	private Vector2 spawnXBounds = new Vector2(-7.5f, 7.5f);
+	private Vector2 spawnXBounds = new Vector2(-5.75f, 7.5f);
 	private Vector2 spawnYBounds = new Vector2(-4f, 6f);
-	private float spawnTimeMax = 2.9f;
+	private float spawnTimeMax = 5f;
 	private float spawnTimer = 0f;
 
 	private float peaceTimeMax = 7f;
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
 			state = "wave";
 			wave++;
 			enemiesPerWave++;
-			spawnTimer = spawnTimeMax - 1f; // Start the wave in a second
+			spawnTimer = 1f; // Start the wave a bit faster
 			Radar.DeclareWave();
 			WaveText.ShowWaveText(wave);
 		}
@@ -59,9 +59,10 @@ public class EnemySpawner : MonoBehaviour
 		if (state == "wave")
 		{
 			spawnTimer += Time.deltaTime;
-			float difficulty = Mathf.Clamp(wave / 10f, 0f, 1.2f);
+			float difficulty = Mathf.Clamp(wave * 3f / 10f, 0f, 3.5f);
 			if (spawnTimer >= spawnTimeMax - difficulty && enemiesWaveCounter < enemiesPerWave)
 			{
+
 				spawnTimer = 0f;
 				int r = wave >= 3 ? Random.Range(0, 2) : 0; // First-Second wave only missiles
 				if (r == 0)

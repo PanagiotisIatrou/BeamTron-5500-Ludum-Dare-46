@@ -24,7 +24,7 @@ public class Oxygen : MonoBehaviour
     public AudioClip beep;
     private float maxOxygen = 10f;
     private float oxygen;
-    private float oxygenDropRate = 0.25f;
+    private float oxygenDropRate = 0.15f;
 
     private void Start()
     {
