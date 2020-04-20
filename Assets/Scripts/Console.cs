@@ -27,7 +27,9 @@ public class Console : MonoBehaviour
 	{
 		foreach (char c in Input.inputString)
 		{
-			AudioSource.PlayClipAtPoint(audioClip, transform.position);
+			Vector3 pos = transform.position;
+			pos.z = -10f;
+			AudioSource.PlayClipAtPoint(audioClip, pos, 0.35f);
 			if (c == '\b')
 			{
 				if (text.Length > preText.Length)

@@ -59,10 +59,11 @@ public class EnemySpawner : MonoBehaviour
 		if (state == "wave")
 		{
 			spawnTimer += Time.deltaTime;
-			if (spawnTimer >= spawnTimeMax && enemiesWaveCounter < enemiesPerWave)
+			float difficulty = Mathf.Clamp(wave / 10f, 0f, 1.2f);
+			if (spawnTimer >= spawnTimeMax - difficulty && enemiesWaveCounter < enemiesPerWave)
 			{
 				spawnTimer = 0f;
-				int r = Random.Range(0, 2);
+				int r = wave >= 3 ? Random.Range(0, 2) : 0; // First-Second wave only missiles
 				if (r == 0)
 					Instantiate(MissilePrefab, GetRandomPosOut(), Quaternion.identity, GameManager.Instance.EnemiesHolder.GetChild(0));
 				else
